@@ -1,14 +1,14 @@
 .cero{
     color: white;
     display: flex;
-    padding-left: 600px; 
-    padding-top: 30px;
+    
 }
 .icon{
-    background-color: black;
+    
     float: left;
     color: white;
     font-size: 50px;
+    
 }
 .icon:hover{
     color: #00b4d8;

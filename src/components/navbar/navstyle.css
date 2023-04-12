@@ -3,7 +3,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-nav{
+.nav{
     display: flex;
     width: 100%;
     list-style-type: none;
@@ -14,15 +14,15 @@ nav{
 .logo{
     width: 200px;
 }
-ul{
+.ul{
     padding-top: 50px;
 }
-li{
+.li{
     display: inline;
     padding-left: 20px;
     padding-right: 20px;
 }
-li a {
+.li{
     color: white;
     text-align: center;
     text-decoration: none;
@@ -30,6 +30,6 @@ li a {
     padding: 50px 20px 50px 20px;
     
 }
-li a:hover:not(.active) {
+.li :hover:not(.active) {
     background-color: #00b4d8;
 }
