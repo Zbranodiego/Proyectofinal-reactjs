@@ -24,12 +24,10 @@ function App() {
 
           <Route path='*' element={<Navigate to='/' />} />
 
-
-
         </Routes>
 
 
-        <ItemListContainer saludar=", es el inicio del ecommerce" />
+        
       </div>
 
     </BrowserRouter>
