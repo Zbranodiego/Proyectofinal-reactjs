@@ -8,7 +8,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary navbar bg-primary " data-bs-theme="dark">
             <div className="container-fluid">
                 <Link to='/' className="navbar-brand">
-                    <img src='/src/assets/sinfond.png' className='logo' />
+                    <img src='https://pbs.twimg.com/media/E8mmzxiX0Awevo4?format=png&name=large' className='logo' />
                 </Link>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div className="navbar-nav">
