@@ -3,8 +3,7 @@ import './cartwidget.css'
 const Cartwidget = () => {
         return(
         <div className="cero">
-            <a href=""><FaOpencart className="icon"/></a>
-            <div>0</div>
+            <FaOpencart className="icon"/>
         </div>
         )
 

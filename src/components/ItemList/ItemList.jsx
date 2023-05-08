@@ -1,18 +1,9 @@
+import { memo } from "react"
 import { Item } from "../Item/Item"
-
-
-export const ItemList = ({ productos }) => {
-  let objStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
-  }
+import './itemlis.css'
+export const ItemList = memo(({ productos }) => {
   return (
-    <div style={objStyle}>
-
+    <div className="item-container">
       {productos.map(producto => <Item key={producto.id} producto={producto} />)}
     </div>
-
-
-  )
-}
+  )})

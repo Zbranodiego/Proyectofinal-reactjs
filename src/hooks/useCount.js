@@ -1,5 +1,4 @@
 import { useState } from "react"
-
 export const useCount = (initial = 0, max =5, min =1) => {
     if ( initial<min || initial> max) initial = min
     const [contador, setContador] = useState(initial)
@@ -11,5 +10,8 @@ export const useCount = (initial = 0, max =5, min =1) => {
       if (contador > min )
       setContador(contador - 1)
     }
-    return{ contador, increment , decrement}
+    const reset = () => {
+      setContador(initial)
+    }
+    return{ contador, increment , decrement, reset}
   }

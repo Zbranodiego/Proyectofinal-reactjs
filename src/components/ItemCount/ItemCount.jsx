@@ -1,27 +1,20 @@
-import { useCount } from "../../hooks/UseCount"
-
-
+import { useCount } from "../../hooks/useCount"
 export const ItemCount = ({onAdd}) => {
-  
-  const {contador , increment,decrement } = useCount()
-
+  const {contador , increment,decrement} = useCount ( 11 , 10 , 1)
   function handleOnAdd (){
     onAdd(contador)
   }
-
-
-
   return (
-    <div className="card text-bg-secondary mb-3">
-      <div className="card-body">
-      <button className="btn btn-outline-dark" onClick={increment}>+</button>
+    <div>
+      <button  className="btn btn-secondary" onClick={increment}>+</button>
+      <br /><br />
       <label>{contador}</label>
-      <button className="btn btn-outline-dark" onClick={decrement}>-</button>
-      <br /><hr />
-      <button className="btn btn-outline-dark" onClick={handleOnAdd}>AGREGAR AL CARRITO</button>
-
-      </div>
+      <br /><br />
+      <button className="btn btn-secondary" onClick={decrement}>-</button>
+      <br /><br />
+      <button className="btn btn-secondary" onClick={handleOnAdd}>AGREGAR AL CARRITO</button>
     </div>
   )
 
 }
+

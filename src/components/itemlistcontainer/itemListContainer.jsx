@@ -1,53 +1,42 @@
-import './itemlistc.css'
 import { useEffect, useState } from 'react'
-import { Filter } from '../Filter/Filter'
-import { useParams } from 'react-router-dom'
-import { mockFetch } from '../../utils/mockFetch'
 import { ItemList } from '../ItemList/ItemList'
-
-export const ItemListContainer = ({ greeting }) => {
+import { useParams } from 'react-router-dom'
+import { Loading } from "../Loading/Loading"
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
+import './itemlistc.css'
+export const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
-
+    const [isLoading, setIsLoading] = useState(true)
     const { cid } = useParams()
-    
     useEffect(() => {
-        if (cid) {
-            mockFetch()
-                .then(resp => setProductos(resp.filter(prod => prod.categoria === cid)))
-        } else {
+      const db = getFirestore()
+      const queryCollection = collection(db, 'Productos react-js')
+      if (cid) {
+        const queryFilter = query(queryCollection,where('categoria', '==', cid) 
+        )
+        
+        getDocs(queryFilter)
+          .then(resp => setProductos(resp.docs.map(producto => ({ id: producto.id, ...producto.data() }))))
+          .catch(err => console.log(err))
+          .finally(() => setIsLoading(false))  
 
-            mockFetch()
-                .then(resp => setProductos(resp))
-                
-        }
+      } else {
+         getDocs(queryCollection)
+         .then(resp => setProductos(resp.docs.map(producto => ({id: producto.id, ...producto.data()})  )))
+         .catch(err => console.log(err))
+         .finally(()=> setIsLoading(false))     
+      }
     }, [cid])
-
-    const handleProductsFiltered = ({ filterState, handleFilterChange }) => (
-
-        <div>
-            
-            
-            <ItemList
-                productos={
-                    filterState == '' ?
-                        productos
-                        :
-                        productos.filter(producto => producto.name.toLowerCase().includes(filterState.toLowerCase()))
-                } />
-        </div>
-    )
+  
     return (
-        <>
-            {productos.length != 0 ?
-                <Filter>
-                    {handleProductsFiltered}
-                </Filter>
-                :
-                <h2>CARGANDO ...</h2>
-            }
-            <div>
-
-            </div>
-        </>
+      <>
+        {isLoading ?
+          <Loading />
+          :
+          <ItemList
+            productos={productos} />
+        }
+      </>
     )
-}
+  } 
+  
